@@ -1,0 +1,21 @@
+# Credentials & Secrets
+config/mysql.password
+*.password
+*.pem
+*.key
+
+# Python & Virtual Environments
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+airflow-venv/
+.env
+
+# Airflow Runtime & Logs
+logs/
+*.log
+*.pid
+airflow.db
+incoming/*
+!incoming/.gitkeep
