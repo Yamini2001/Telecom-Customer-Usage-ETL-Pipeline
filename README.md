@@ -6,7 +6,7 @@ An enterprise-grade Big Data ETL pipeline that ingests daily telecom customer us
 
 ## Pipeline Execution Overview
 
-![Airflow Execution Pipeline](docs/airflowdag_pipeline.png)
+![Airflow Execution Pipeline](docs/airflowdag-pipeline.png)
 
 ```text
                +-----------------------+
@@ -74,14 +74,14 @@ Source Database: MySQL 8.0
 OS Platform: WSL2 (Ubuntu 24.04 LTS)
 
 ## Airflow DAG Task Workflow
-wait_for_usage_ready_file: FileSensor pokes the incoming directory for the usage.ready signal file.
+1. wait_for_usage_ready_file: FileSensor pokes the incoming directory for the usage.ready signal file.
 
-verify_file_using_hook: PythonOperator leverages FSHook to validate file existence on the file path.
+2. verify_file_using_hook: PythonOperator leverages FSHook to validate file existence on the file path.
 
-sqoop_extract_mysql_to_hdfs: Executes Sqoop import to pull raw relational metrics into /telecom/raw/customer_usage.
+3. sqoop_extract_mysql_to_hdfs: Executes Sqoop import to pull raw relational metrics into /telecom/raw/customer_usage.
 
-hive_transform_and_load: Triggers Hive HQL script to create raw external tables, clean metrics, and populate summary tables.
+4. hive_transform_and_load: Triggers Hive HQL script to create raw external tables, clean metrics, and populate summary tables.
 
-generate_usage_summary: Queries customer_usage_summary to print aggregated usage records in the log output.
+5. generate_usage_summary: Queries customer_usage_summary to print aggregated usage records in the log output.
 
-pipeline_complete: Final completion checkpoint signifying pipeline success.
+6. pipeline_complete: Final completion checkpoint signifying pipeline success.
