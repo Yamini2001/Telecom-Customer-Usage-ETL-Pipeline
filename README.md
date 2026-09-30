@@ -6,7 +6,7 @@ An enterprise-grade Big Data ETL pipeline that ingests daily telecom customer us
 
 ## Pipeline Execution Overview
 
-![Airflow Execution Pipeline](/docs/airflowdag-pipeline.png)
+![Airflow Execution Pipeline](docs/airflow_pipeline_success.png)
 
 ```text
                +-----------------------+
